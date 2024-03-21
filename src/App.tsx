@@ -1,34 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import Product1 from './assets/product1.jpg'
+import Product2 from './assets/product2.jpg'
+import Product3 from './assets/product3.jpg'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const produts = [
+    {
+      id: 1,
+      name: "Produto 1",
+      img: Product1,
+      price: 90
+    },
+    {
+      id: 2,
+      name: "Produto 2",
+      img: Product2,
+      price: 50
+    },
+    {
+      id: 3,
+      name: "Produto 3",
+      img: Product3,
+      price: 100
+    },
+  ]
+
+  const handlePayment = (product: any) => {
+    console.log(product);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='py-20 flex w-full items-center justify-center'>
+      <div className='flex gap-5'>
+        {produts.map((product) => (
+          <div key={product.id} className='flex flex-col gap-3 border border-white rounded-lg'>
+            <img className='mask mask-square w-full h-full max-w-72 object-cover rounded-lg' src={product.img} alt={product.name} />
+            <h1 className='text-white'>{product.name}</h1>
+            <button className='btn btn-primary w-full min-h-0 h-fit py-2' onClick={() => handlePayment(product)}>Add</button>
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
