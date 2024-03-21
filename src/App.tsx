@@ -37,8 +37,10 @@ function App() {
         {produts.map((product) => (
           <div key={product.id} className='flex flex-col gap-3 border border-white rounded-lg'>
             <img className='mask mask-square w-full h-full max-w-72 object-cover rounded-lg' src={product.img} alt={product.name} />
-            <h1 className='text-white'>{product.name}</h1>
-            <button className='btn btn-primary w-full min-h-0 h-fit py-2' onClick={() => handlePayment(product)}>Add</button>
+            <div className='px-5 pb-3 flex flex-col gap-3'>
+              <h1 className='text-white'>{product.name}</h1>
+              <button className='btn btn-primary w-full min-h-0 h-fit py-2' onClick={() => handlePayment(product)}>Buy</button>
+            </div>
           </div>
         ))}
       </div>
